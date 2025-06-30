@@ -1,0 +1,226 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+    font-family: 'Inter', sans-serif;
+    background-color: #121222;
+    color: #e0e0e0;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px;
+    background-color: #1a1a2e;
+    color: #a0a0a0;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    color: #4fc3f7;
+}
+
+.card {
+    background-color: #1a1a2e;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    border: 1px solid #2a2a4e;
+    border-radius: 0.75rem;
+}
+
+.btn {
+    border-radius: 0.5rem;
+    font-weight: 600;
+    border: none;
+    padding: 0.75rem 1.25rem;
+}
+
+.btn-primary {
+    background-color: #0097c7;
+    color: white;
+}
+
+.table th {
+    font-weight: 600;
+    border-top: none;
+    color: #4fc3f7;
+    border-bottom: 2px solid #2a2a4e;
+}
+
+.table td {
+    border-color: #2a2a4e;
+}
+
+.badge {
+    font-size: 0.75em;
+    border-radius: 0.5rem;
+    padding: 0.4em 0.8em;
+    font-weight: 600;
+}
+
+.btn-group .btn.active {
+    background-color: #4fc3f7;
+    border-color: #4fc3f7;
+    color: #121222;
+    box-shadow: 0 0 15px rgba(79, 195, 247, 0.4);
+}
+
+/* Mejoras para alertas */
+.alert {
+    border-radius: 0.5rem;
+    border: 1px solid;
+    border-left-width: 4px;
+}
+
+.alert-success {
+    background-color: rgba(39, 174, 96, 0.1);
+    border-color: #27ae60;
+    color: #f2f2f2;
+}
+
+.alert-danger {
+    background-color: rgba(231, 76, 60, 0.1);
+    border-color: #e74c3c;
+    color: #f2f2f2;
+}
+
+.alert-warning {
+    background-color: rgba(241, 196, 15, 0.1);
+    border-color: #f1c40f;
+    color: #f2f2f2;
+}
+
+.alert-info {
+    background-color: rgba(79, 195, 247, 0.1);
+    border-color: #4fc3f7;
+    color: #f2f2f2;
+}
+
+.badge.bg-success {
+    background-color: #27ae60 !important;
+    color: white;
+}
+
+.badge.bg-danger {
+    background-color: #e74c3c !important;
+    color: white;
+}
+
+.badge.bg-warning {
+    background-color: #f1c40f !important;
+    color: #121222;
+}
+
+.badge.bg-info {
+    background-color: #4fc3f7 !important;
+    color: #121222;
+}
+
+
+
+code {
+    color: #ff79c6;
+    background-color: #2a2a4e;
+    padding: 0.2rem 0.4rem;
+    border-radius: 0.25rem;
+}
+
+.btn, .card, .alert {
+    transition: all 0.2s ease-in-out;
+}
+
+    .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 12px rgba(0, 151, 199, 0.3);
+    }
+
+
+@media (max-width: 768px) {
+    .table-responsive table,
+    .table-responsive thead,
+    .table-responsive tbody,
+    .table-responsive th,
+    .table-responsive td,
+    .table-responsive tr {
+        display: block;
+    }
+
+        .table-responsive thead tr {
+            position: absolute;
+            top: -9999px;
+            left: -9999px;
+        }
+
+    .table-responsive tr {
+        border: 1px solid #2a2a4e;
+        margin-bottom: 10px;
+        padding: 10px;
+        border-radius: 8px;
+        background-color: #1a1a2e;
+    }
+
+    .table-responsive td {
+        border: none;
+        position: relative;
+        padding-left: 50% !important;
+        text-align: right;
+    }
+
+        .table-responsive td:before {
+            content: attr(data-label) ": ";
+            position: absolute;
+            left: 10px;
+            width: 45%;
+            text-align: left;
+            font-weight: bold;
+            color: #4fc3f7;
+        }
+}
+
+
+.btn-loading {
+    position: relative;
+    pointer-events: none;
+    color: transparent !important;
+}
+
+    .btn-loading::after {
+        content: "";
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        top: 50%;
+        left: 50%;
+        margin-left: -10px;
+        margin-top: -10px;
+        border: 3px solid rgba(255, 255, 255, 0.2);
+        border-top-color: #ffffff;
+        border-radius: 50%;
+        animation: button-loading-spinner 1s linear infinite;
+    }
+
+@keyframes button-loading-spinner {
+    from {
+        transform: rotate(0turn);
+    }
+
+    to {
+        transform: rotate(1turn);
+    }
+}
