@@ -1,225 +1,118 @@
-﻿Proyecto Inventario - MyApp
-MyApp es una aplicación web completa para la gestión de inventario, construida con una arquitectura N-Capas utilizando .NET y C#. Permite el seguimiento de artículos, la gestión de usuarios y roles, y el control de préstamos de artículos, todo con un sistema de auditoría robusto y generación de reportes.
 
-Tabla de Contenidos
-Características Principales
+# Gestion de Inventario - Chris Cepeda
 
-Tecnologías Utilizadas
+Preuba de Programacion avanzada, sistema de gestion de inventario.
 
-Arquitectura y Patrones de Diseño
+# 📦- Sistema de Inventario
 
-Arquitectura N-Capas
+[![.NET 8](https://img.shields.io/badge/.NET-8.0-blueviolet?logo=dotnet)](https://dotnet.microsoft.com/)
+[![Razor Pages](https://img.shields.io/badge/Razor%20Pages-ASP.NET%20Core-blue?logo=razor)](https://learn.microsoft.com/aspnet/core/razor-pages)
+[![SQL Server](https://img.shields.io/badge/SQL%20Server-2017%2B-red?logo=microsoftsqlserver)](https://www.microsoft.com/sql-server)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-Patrones de Diseño
+> **MyApp** es una aplicación web moderna para la gestión de inventario, préstamos y auditoría, desarrollada con una arquitectura N-Capas en .NET 8 y Razor Pages. Permite controlar artículos, usuarios, roles y reportes avanzados en PDF y Excel.
 
-Instrucciones de Despliegue
+---
 
-Prerrequisitos
+## 📑 Tabla de Contenidos
 
-Configuración
+- [Características](#características)
+- [Tecnologías](#tecnologías)
+- [Arquitectura](#arquitectura)
+- [Patrones de Diseño](#patrones-de-diseño)
+- [Despliegue](#despliegue)
+- [Estructura del Proyecto](#estructura-del-proyecto)
+- [Capturas de Pantalla](#capturas-de-pantalla)
 
-Ejecución
+---
 
-Estructura del Proyecto
+## ✨ Características
 
-Características Principales
-Gestión de Usuarios y Roles: Sistema de autenticación basado en cookies. Roles de Administrator y Operator con diferentes niveles de acceso.
+- **Gestión de Usuarios y Roles**  
+  Autenticación segura, roles de Administrador y Operador, activación/desactivación de cuentas.
 
-CRUD de Artículos: Creación, lectura, actualización y eliminación de artículos del inventario, incluyendo código, nombre, categoría, estado y ubicación.
+- **Inventario de Artículos**  
+  CRUD completo, categorías, estados, ubicación y búsqueda avanzada.
 
-Sistema de Préstamos: Flujo de trabajo completo para préstamos: solicitud, aprobación, rechazo, entrega y devolución.
+- **Préstamos de Artículos**  
+  Flujo de solicitud, aprobación, entrega, devolución y rechazo.
 
-Auditoría Completa: Registro detallado de todas las acciones importantes (creación, actualización, eliminación, login, etc.) con información del usuario, fecha, IP y cambios realizados.
+- **Auditoría y Seguridad**  
+  Registro de acciones, cambios, login, IP y usuario. Hash de contraseñas con BCrypt.
 
-Panel de Control (Dashboard): Vista principal con estadísticas clave del sistema, como número de artículos, préstamos activos, pendientes y vencidos.
+- **Panel de Control (Dashboard)**  
+  Estadísticas clave: artículos, préstamos activos, pendientes y vencidos.
 
-Reportes: Generación de reportes en formato PDF y Excel.
+- **Reportes Profesionales**  
+  - PDF: Listado de artículos, estado general del inventario.
+  - Excel: Historial de préstamos, actividad de usuarios.
 
-PDF: Listado de artículos, estado general del inventario.
+- **UI Moderna y Responsive**  
+  Basada en Bootstrap 5, con experiencia de usuario mejorada y notificaciones.
 
-Excel: Historial de préstamos, registro de actividad de usuarios.
+---
 
-Seguridad: Hashing de contraseñas con BCrypt, protección Anti-CSRF y manejo seguro de cookies de autenticación.
+## 🛠️ Tecnologías
 
-Tecnologías Utilizadas
-Backend: .NET 8 / C#
+- **Backend:** .NET 8, C#
+- **Web:** ASP.NET Core Razor Pages
+- **ORM:** Entity Framework Core 8
+- **Base de Datos:** SQL Server 2017+
+- **Logging:** Serilog
+- **PDF:** QuestPDF
+- **Excel:** ClosedXML
+- **Seguridad:** BCrypt.Net-Next, Anti-CSRF
+- **Frontend:** HTML, CSS, Bootstrap 5, JavaScript
 
-Framework Web: ASP.NET Core MVC
+---
 
-Base de Datos: SQL Server
+## 🏗️ Arquitectura
 
-ORM: Entity Framework Core 8
+El proyecto sigue una **arquitectura N-Capas** para máxima mantenibilidad y escalabilidad:
 
-Logging: Serilog
+- **Entities:** Modelos de dominio (User, Item, Loan, etc.)
+- **DataAccess:** Repositorios, Unit of Work, contexto EF Core, configuraciones.
+- **Business:** Servicios de negocio, DTOs, lógica de validación y orquestación.
+- **Presentation:** Razor Pages, controladores, modelos de vista y recursos estáticos.
 
-Generación de PDF: QuestPDF
 
-Generación de Excel: ClosedXML
+---
 
-Seguridad: BCrypt.Net-Next
+## 🧩 Patrones de Diseño
 
-Frontend: HTML, CSS, Bootstrap 5, JavaScript
+- **Repository Pattern:**  
+  Abstracción de acceso a datos, desacoplando la lógica de negocio de EF Core.
 
-Arquitectura y Patrones de Diseño
-El proyecto sigue una arquitectura limpia y desacoplada, organizada en N-Capas para separar responsabilidades y facilitar el mantenimiento y la escalabilidad.
+- **Unit of Work Pattern:**  
+  Gestión de transacciones atómicas y consistencia de datos.
 
-Arquitectura N-Capas
-La solución está dividida en las siguientes capas lógicas:
+- **DTOs y ViewModels:**  
+  Separación de modelos de dominio y presentación.
 
-MyApp.Entities (Capa de Entidades)
+---
 
-Propósito: Es el núcleo de la aplicación. Contiene los modelos de dominio (POCOs - Plain Old CLR Objects) que representan los datos, como User, Item, Loan, etc.
+## 🚀 Despliegue
 
-Componentes:
+### 1. Prerrequisitos
 
-Models: Clases de entidad que se mapean a la base de datos.
+- [.NET 8 SDK](https://dotnet.microsoft.com/download)
+- SQL Server 2017+ (Express o superior)
+- Visual Studio 2022 (recomendado) o VS Code
 
-Interfaces: Contratos como IAuditableEntity que definen propiedades comunes (ej. CreatedDate, CreatedBy).
+### 2. Clonar el Repositorio
 
-Enums: Enumeraciones como ItemStatus y LoanStatus para representar estados fijos.
+(* Repositorio actual *)
 
-MyApp.DataAccess (Capa de Acceso a Datos)
+### 3. Configurar la Cadena de Conexión
 
-Propósito: Gestiona toda la comunicación con la base de datos. Abstrae la lógica de persistencia del resto de la aplicación.
+Edita `MyApp.Presentation/appsettings.json`:
 
-Componentes:
 
-Context: El ApplicationDbContext de Entity Framework Core, que representa la sesión con la base de datos.
 
-Repositories: Implementaciones concretas del patrón Repository para cada entidad.
+### 4. Restaurar y Migrar la Base de Datos
 
-UnitOfWork: Implementación del patrón Unit of Work para gestionar transacciones atómicas.
+dotnet restore cd MyApp.Presentation dotnet ef database update
 
-Configurations: Configuraciones de Fluent API para el mapeo de entidades a tablas.
-
-Interceptors: Interceptores de EF Core, como AuditInterceptor, para automatizar tareas.
-
-MyApp.Business (Capa de Lógica de Negocio)
-
-Propósito: Contiene la lógica de negocio central de la aplicación. Orquesta las operaciones, valida las reglas de negocio y transforma los datos entre la capa de acceso a datos y la de presentación.
-
-Componentes:
-
-Services: Clases que contienen la lógica de negocio (ej. ItemService, LoanService).
-
-DTOs (Data Transfer Objects): Objetos planos utilizados para transferir datos entre capas, evitando exponer las entidades de dominio directamente a la UI.
-
-MyApp.Presentation (Capa de Presentación)
-
-Propósito: Es la interfaz de usuario (UI). En este caso, una aplicación web ASP.NET Core MVC.
-
-Componentes:
-
-Controllers: Reciben las peticiones HTTP, interactúan con los servicios de la capa de negocio y devuelven las vistas.
-
-Views: Archivos Razor (.cshtml) que renderizan el HTML que se envía al cliente.
-
-Models (ViewModels): Modelos específicos para las vistas, que contienen los datos y la lógica de validación necesarios para una UI particular.
-
-Patrones de Diseño
-Repository Pattern:
-
-Descripción: Media entre el dominio y las capas de mapeo de datos usando una interfaz similar a una colección para acceder a los objetos de dominio.
-
-Implementación: Se define una interfaz genérica IRepository<T> con operaciones CRUD comunes y repositorios específicos (IItemRepository, IUserRepository) que heredan de la genérica y añaden métodos de consulta propios. Esto desacopla la capa de negocio de la implementación concreta de Entity Framework Core.
-
-Unit of Work Pattern:
-
-Descripción: Mantiene una lista de objetos afectados por una transacción de negocio y coordina la escritura de cambios y la resolución de problemas de concurrencia.
-
-Implementación: La clase UnitOfWork encapsula el ApplicationDbContext y expone todas las interfaces de los repositorios. Proporciona un método SaveChangesAsync() que confirma todas las operaciones (añadir, modificar, eliminar) en una única transacción de base de datos, garantizando la integridad de los datos.
-
-Instrucciones de Despliegue
-Sigue estos pasos para configurar y ejecutar el proyecto en un entorno de desarrollo.
-
-Prerrequisitos
-SDK de .NET: Asegúrate de tener instalado el SDK de .NET (versión 8.0 o superior).
-
-Servidor de Base de Datos: SQL Server (versión 2017 o superior, incluyendo la edición Express).
-
-IDE (Opcional): Visual Studio 2022 o Visual Studio Code.
-
-Configuración
-Clonar el Repositorio:
-
-Bash
-
-git clone <URL_DEL_REPOSITORIO>
-cd <NOMBRE_DEL_DIRECTORIO>
-Configurar la Cadena de Conexión:
-
-Abre el archivo appsettings.json en el proyecto MyApp.Presentation.
-
-Modifica la cadena de conexión DefaultConnection para que apunte a tu instancia de SQL Server.
-
-Ejemplo:
-
-JSON
-
-{
-  "ConnectionStrings": {
-    "DefaultConnection": "Server=TU_SERVIDOR;Database=InventarioBD;Trusted_Connection=True;TrustServerCertificate=True;"
-  },
-}
-TU_SERVIDOR: Puede ser . o localhost si es una instancia local, o el nombre de tu servidor (ej. MSI-JAIRO).
-
-InventarioBD: El nombre que deseas para la base de datos. EF Core la creará si no existe.
-
-Ejecución
-Restaurar Dependencias:
-Abre una terminal en la raíz de la solución y ejecuta:
-
-Bash
-
-dotnet restore
-Aplicar Migraciones de la Base de Datos:
-Para crear la base de datos y sus tablas, ejecuta los siguientes comandos desde la Consola del Administrador de Paquetes en Visual Studio o desde una terminal en la carpeta raíz del proyecto.
-
-Navega al proyecto MyApp.Presentation (si usas la terminal):
-
-Bash
-
-cd MyApp.Presentation
-Aplica las migraciones a la base de datos:
-
-Bash
-
-dotnet ef database update
-Esto leerá las migraciones del proyecto DataAccess y creará el esquema en la base de datos que especificaste en la cadena de conexión.
-
-Ejecutar la Aplicación:
-
-Desde Visual Studio, presiona el botón de Play (▶️) o F5.
-
-Desde la terminal (ubicada en la carpeta MyApp.Presentation), ejecuta:
-
-Bash
+### 5. Ejecutar la Aplicación
 
 dotnet run
-La aplicación estará disponible en https://localhost:XXXX y http://localhost:YYYY, donde XXXX y YYYY son los puertos indicados en la consola.
-
-Acceder a la Aplicación:
-
-Abre tu navegador y ve a la URL de la aplicación.
-
-Regístrate como un nuevo usuario. Por defecto, el primer usuario registrado obtendrá el rol de "Operator".
-
-Estructura del Proyecto
-/MyApp
-├── MyApp.Business/
-│   ├── Dtos/
-│   └── Services/
-├── MyApp.DataAccess/
-│   ├── Configurations/
-│   ├── Context/
-│   ├── Repositories/
-│   └── UnitOfWork/
-├── MyApp.Entities/
-│   ├── Enums/
-│   ├── Interfaces/
-│   └── Models/
-└── MyApp.Presentation/
-    ├── Controllers/
-    ├── Models/ (ViewModels)
-    ├── Views/
-    └── Program.cs
